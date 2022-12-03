@@ -1,10 +1,23 @@
 /* ten plik skleja wszystkie scss */
 
-@import 'partials/normalize';
-@import 'partials/layout';
-@import 'partials/bootstrap';
-@import 'partials/variables';
-@import 'partials/typography';
-@import 'partials/global';
+// normalize default styles
+@import '_normalize.scss';
 
+// Bootstrap
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+@import 'bootstrap/utilities';
+@import 'bootstrap/grid';
+@import 'bootstrap/images';
+
+// variables
+@import '_variables.scss';
+
+// common styles
+@import '_layout.scss';
+@import '_typography.scss';
+@import '_global.scss';
+
+// pages
 @import 'pages/about';

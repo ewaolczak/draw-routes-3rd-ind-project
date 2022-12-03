@@ -1,0 +1,61 @@
+/* będzie dla nas z kolei miejscem na te reguły,
+które nie tyczą się ani układu, ani bezpośrednio tekstu,
+ale wciąż mogą być traktowane jako uniwersalne,
+czyli właśnie takie, które mogą być z powodzeniem używane
+w wielu miejscach – sekcjach czy podstronach.
+np. style dla buttonów, które wyglądają identycznie w kilku sekcjach. */
+
+body {
+  margin: 0;
+  background: $color-dark;
+  font-family: $font-main;
+  font-weight: $font-weight-regular;
+  color: $color-light;
+}
+
+header {
+  position: absolute;
+}
+
+header .container {
+  margin: 0;
+  padding: 0;
+}
+
+header img {
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  width: 242px;
+  height: 58px;
+  background-color: $color-main;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+nav {
+  position: relative;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav li {
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 0 50px;
+}
+
+nav a {
+  text-decoration: none;
+  color: $color-light;
+  letter-spacing: 2.25px;
+}

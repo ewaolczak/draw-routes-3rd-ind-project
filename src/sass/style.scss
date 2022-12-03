@@ -1,0 +1,10 @@
+/* ten plik skleja wszystkie scss */
+
+@import 'partials/normalize';
+@import 'partials/layout';
+@import 'partials/bootstrap';
+@import 'partials/variables';
+@import 'partials/typography';
+@import 'partials/global';
+
+@import 'pages/about';

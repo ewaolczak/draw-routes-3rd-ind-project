@@ -1,4 +1,4 @@
-import { templates } from '../settings.js';
+import { templates, select } from '../settings.js';
 
 class Finder {
   constructor(element) {
@@ -18,11 +18,10 @@ class Finder {
     const thisFinder = this;
 
     // determine what title and button content should be used
-    // eslint-disable-next-line no-unused-vars
     let pageData = null;
     switch (thisFinder.step) {
     case 1:
-      pageData = { title: 'Draw routes', buttonText: 'Finish drawing' };
+      pageData = { title: 'Draw routes', btnText: 'Finish drawing' };
       break;
     case 2:
       pageData = { title: 'Pick start and finish', buttonText: 'Compute' };
@@ -33,8 +32,23 @@ class Finder {
     }
 
     // generate view from the template and set it as page content
-    const generatedHTML = templates.finder(thisFinder.pageData);
+    const generatedHTML = templates.finder(pageData);
     thisFinder.element.innerHTML = generatedHTML;
+
+    // generate 100 fields for grid and add it to HTML
+    let html = '';
+    for (let row = 1; row <= 10; row++) {
+      for (let col = 1; col <= 10; col++) {
+        html +=
+          '<div class=”field” data-row="' +
+          row +
+          '" data-col="' +
+          col +
+          '"></div>';
+      }
+    }
+
+    thisFinder.element.querySelector(select.finder.grid).innerHTML = html;
   }
 }
 

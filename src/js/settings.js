@@ -11,6 +11,9 @@ export const select = {
   nav: {
     links: '.navbar a',
   },
+  finder: {
+    grid: '.finder-grid'
+  }
 };
 
 export const classNames = {

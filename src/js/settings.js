@@ -1,0 +1,35 @@
+export const select = {
+  temlateOf: {
+    finder: '#template-finder',
+  },
+  containerOf: {
+    pages: '#pages',
+    home: '.home-wrapper',
+    finder: '.finder-wrapper',
+    hero: '#hero',
+  },
+  nav: {
+    links: '.navbar a',
+  },
+};
+
+export const classNames = {
+  pages: {
+    active: 'active',
+  },
+};
+
+export const settings = {
+  db: {
+    url:
+      '//' +
+      window.location.hostname +
+      (window.location.hostname == 'localhost' ? ':3131' : ''),
+  },
+};
+
+export const templates = {
+  finder: Handlebars.compile(
+    document.querySelector(select.temlateOf.finder).innerHTML
+  ),
+};

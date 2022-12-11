@@ -16,17 +16,37 @@
 
 <body>
   <header>
-    <div class="gradient"></div>
-    <img src="images/background.jpg" alt="photo of desert">
-    <nav class="navbar">
-      <ul class="navbar-nav">
-        <li><a href="#">about</a></li>
-        <li><a href="#">finder</a></li>
-      </ul>
-    </nav>
-    <h1 class="title">pathfinder</h1>
-    <h2 class="subtitle">for travellers</h2>
+    <section id="hero">
+      <div class="gradient"></div>
+      <img src="images/background.jpg" alt="photo of desert">
+      <nav class="navbar">
+        <ul class="navbar-nav">
+          <li><a href="#">about</a></li>
+          <li><a href="#">finder</a></li>
+        </ul>
+      </nav>
+      <h1 class="title">pathfinder</h1>
+      <h2 class="subtitle">for travellers</h2>
+    </section>
   </header>
+
+  <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
+    <section id="finder">
+      <div class="finder-wrapper container"></div>
+    </section>
+  </div>
+
+  <script id="template-finder" type="text/x-handlebars-template">
+<h3>{{ title }}</h3>
+<div class="finder"></div>
+<button>{{ btnText }}</button>
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="js/app.js" type="module"></script>
 </body>
 
 </html>

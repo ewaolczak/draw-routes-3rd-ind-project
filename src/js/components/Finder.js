@@ -40,11 +40,7 @@ class Finder {
     for (let row = 1; row <= 10; row++) {
       for (let col = 1; col <= 10; col++) {
         html +=
-          '<div class=”field” data-row="' +
-          row +
-          '" data-col="' +
-          col +
-          '"></div>';
+          '<div class="field" data-row="' + row + '" data-col="' + col + '"></div>';
       }
     }
 

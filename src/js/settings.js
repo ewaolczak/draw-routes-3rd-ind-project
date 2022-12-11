@@ -12,7 +12,7 @@ export const select = {
     links: '.navbar a',
   },
   finder: {
-    grid: '.finder-grid'
+    grid: '.finder'
   }
 };
 

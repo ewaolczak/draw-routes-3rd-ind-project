@@ -1,4 +1,4 @@
-import {templates} from '../settings.js';
+import { templates } from '../settings.js';
 
 class Finder {
   constructor(element) {
@@ -33,7 +33,7 @@ class Finder {
     }
 
     // generate view from the template and set it as page content
-    const generatedHTML = templates.Finder(thisFinder.pageData);
+    const generatedHTML = templates.finder(thisFinder.pageData);
     thisFinder.element.innerHTML = generatedHTML;
   }
 }

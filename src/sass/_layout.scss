@@ -14,22 +14,3 @@ np. container, klady gridowe itp. */
   padding: 30px 60px;
 }
 
-/* GRID */
-.finder {
-  z-index: 5;
-  display: flex;
-  flex-wrap: wrap;
-  width: $basic-field-size * 10;
-  height: $basic-field-size * 10;
-}
-
-.field {
-  z-index: 5;
-  width: $basic-field-size;
-  height: $basic-field-size;
-  border: solid 1px $color-light;
-
-  &-selected {
-    color: $color-main;
-  }
-}

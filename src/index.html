@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
   <title>draw routes</title>
 </head>
 
@@ -18,7 +18,7 @@
   <header>
     <section id="hero">
       <div class="gradient"></div>
-      <img src="images/background.jpg" alt="photo of desert">
+      <img src="images/background.jpg" alt="photo of desert" />
       <nav class="navbar">
         <ul class="navbar-nav">
           <li><a href="#">about</a></li>
@@ -41,11 +41,14 @@
     </section>
   </div>
 
+  <!--finder page template-->
   <script id="template-finder" type="text/x-handlebars-template">
-<h3>{{ title }}</h3>
-<div class="finder"></div>
-<button>{{ btnText }}</button>
-  </script>
+      <h3>{{ title }}</h3>
+      <div class="finder"></div>
+      <button class="btn">{{ btnText }}</button>
+    </script>
+  <!--end of finder page template-->
+
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="js/app.js" type="module"></script>

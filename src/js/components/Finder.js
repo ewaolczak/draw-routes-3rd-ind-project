@@ -1,4 +1,4 @@
-import { templates, select } from '../settings.js';
+import { templates, select, classNames } from '../settings.js';
 
 class Finder {
   constructor(element) {
@@ -12,6 +12,8 @@ class Finder {
 
     // render view for the first time
     thisFinder.render();
+    thisFinder.getElements();
+    thisFinder.selectField();
   }
 
   render() {
@@ -24,10 +26,10 @@ class Finder {
       pageData = { title: 'Draw routes', btnText: 'Finish drawing' };
       break;
     case 2:
-      pageData = { title: 'Pick start and finish', buttonText: 'Compute' };
+      pageData = { title: 'Pick start and finish', btnText: 'Compute' };
       break;
     case 3:
-      pageData = { title: 'The best route is', buttonText: 'Start again' };
+      pageData = { title: 'The best route is', btnText: 'Start again' };
       break;
     }
 
@@ -40,11 +42,37 @@ class Finder {
     for (let row = 1; row <= 10; row++) {
       for (let col = 1; col <= 10; col++) {
         html +=
-          '<div class="field" data-row="' + row + '" data-col="' + col + '"></div>';
+          '<div class="field" data-row="' +
+          row +
+          '" data-col="' +
+          col +
+          '"></div>';
       }
     }
 
     thisFinder.element.querySelector(select.finder.grid).innerHTML = html;
+  }
+
+  getElements() {
+    const thisFinder = this;
+
+    thisFinder.dom = {
+      wrapper: thisFinder.element,
+      finderContainer: document.querySelector(select.containerOf.finder),
+      field: document.querySelector(classNames.finder.field),
+      button: document.querySelector(classNames.finder.button),
+    };
+  }
+
+  selectField() {
+    const thisFinder = this;
+
+    thisFinder.dom.finderContainer.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const clickedElement = e.target;
+      console.log(clickedElement);
+    });
   }
 }
 

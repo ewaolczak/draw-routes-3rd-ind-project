@@ -12,13 +12,18 @@ export const select = {
     links: '.navbar a',
   },
   finder: {
-    grid: '.finder'
-  }
+    grid: '.finder',
+    field: '.field',
+  },
 };
 
 export const classNames = {
   pages: {
     active: 'active',
+  },
+  finder: {
+    field: '.field',
+    button: '.btn',
   },
 };
 

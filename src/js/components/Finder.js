@@ -14,7 +14,7 @@ class Finder {
     // render view for the first time
     thisFinder.render();
     thisFinder.getElements();
-    thisFinder.initAction();
+    // thisFinder.initAction();
     // thisFinder.selectField();
 
     thisFinder.grid = {};
@@ -57,6 +57,8 @@ class Finder {
     }
 
     thisFinder.element.querySelector(select.finder.grid).innerHTML = html;
+
+    thisFinder.initAction();
   }
 
   getElements() {

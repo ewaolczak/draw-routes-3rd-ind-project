@@ -14,6 +14,7 @@ export const select = {
   finder: {
     grid: '.finder',
     field: '.field',
+    button: '.btn',
   },
 };
 
@@ -23,7 +24,8 @@ export const classNames = {
   },
   finder: {
     field: '.field',
-    button: '.btn',
+    active: '.active',
+
   },
 };
 

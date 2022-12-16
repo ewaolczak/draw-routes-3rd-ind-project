@@ -52,7 +52,7 @@ class Finder {
     let html = '';
     for (let row = 1; row <= 10; row++) {
       for (let col = 1; col <= 10; col++) {
-        html += `<div class="field" data-row=" ${row} " data-col=" ${col} "></div>`;
+        html += `<div class="field" data-row="${row}" data-col="${col}"></div>`;
       }
     }
 
@@ -68,7 +68,7 @@ class Finder {
       wrapper: thisFinder.element,
       finderContainer: document.querySelector(select.containerOf.finder),
       button: document.querySelector(select.finder.button),
-      field: document.querySelector(classNames.finder.field),
+      fields: document.querySelectorAll(classNames.finder.field),
     };
   }
 
@@ -80,17 +80,23 @@ class Finder {
 
   initAction() {
     const thisFinder = this;
+
+    thisFinder.getElements();
+
     if (thisFinder.step === 1) {
       thisFinder.dom.button.addEventListener('click', function (e) {
         e.preventDefault();
         thisFinder.changeStep(2);
       });
 
-      thisFinder.dom.field.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (e.target.classList.contains(classNames.finder.field)) {
-          thisFinder.toggleField(e.target);
-        }
+      thisFinder.dom.fields.forEach((field) => {
+        field.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          if (e.target.classList.contains('field')) {
+            thisFinder.toggleField(e.target);
+          }
+        });
       });
     } else if (thisFinder.step === 2) {
       thisFinder.dom.button.addEventListener('click', function (e) {
@@ -124,6 +130,8 @@ class Finder {
       const gridValues = Object.values(thisFinder.grid)
         .map((col) => Object.values(col))
         .flat();
+
+      console.log(gridValues);
 
       // if grid isn't empty...
       if (gridValues.includes(true)) {

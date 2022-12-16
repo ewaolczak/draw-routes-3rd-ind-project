@@ -157,7 +157,7 @@ class Finder {
 
       // select clicked field
       thisFinder.grid[field.row][field.col] = true;
-      fieldElem.classList.add(classNames.finder.active);
+      fieldElem.classList.add('active');
     }
   }
 

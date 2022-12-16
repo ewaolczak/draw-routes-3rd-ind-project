@@ -137,13 +137,13 @@ class Finder {
         // determine edge fields
         const edgeFields = [];
         if (field.col > 1)
-          edgeFields.push(thisFinder.grid[field.row][field.col - 1]); //get field on the left value
+          edgeFields.push(thisFinder.grid[field.row][+field.col - 1]); //get field on the left value
         if (field.col < 10)
-          edgeFields.push(thisFinder.grid[field.row][field.col + 1]); //get field on the right value
+          edgeFields.push(thisFinder.grid[field.row][+field.col + 1]); //get field on the right value
         if (field.row > 1)
-          edgeFields.push(thisFinder.grid[field.row - 1][field.col]); //get field on the top value
-        // if (field.row < 10)
-        //   edgeFields.push(thisFinder.grid[field.row + 1][field.col]); //get field on the bottom value
+          edgeFields.push(thisFinder.grid[+field.row - 1][field.col]); //get field on the top value
+        if (field.row < 10)
+          edgeFields.push(thisFinder.grid[+field.row + 1][field.col]); //get field on the bottom value
 
         // if clicked field doesn't touch at least one that is already selected -> show alert and finish function
         if (!edgeFields.includes(true)) {

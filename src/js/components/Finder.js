@@ -15,7 +15,6 @@ class Finder {
     thisFinder.render();
     thisFinder.getElements();
     // thisFinder.initAction();
-    // thisFinder.selectField();
 
     thisFinder.grid = {};
     for (let row = 1; row <= 10; row++) {
@@ -124,7 +123,7 @@ class Finder {
     // if field with this row and col is true -> unselect it
     if (thisFinder.grid[field.row][field.col]) {
       thisFinder.grid[field.row][field.col] = false;
-      fieldElem.classList.remove(classNames.finder.active);
+      fieldElem.classList.remove('active');
     } else {
       // flatten object to array of values e.g. [false, false, false]
       const gridValues = Object.values(thisFinder.grid)
@@ -143,8 +142,8 @@ class Finder {
           edgeFields.push(thisFinder.grid[field.row][field.col + 1]); //get field on the right value
         if (field.row > 1)
           edgeFields.push(thisFinder.grid[field.row - 1][field.col]); //get field on the top value
-        if (field.row < 10)
-          edgeFields.push(thisFinder.grid[field.row + 1][field.col]); //get field on the bottom value
+        // if (field.row < 10)
+        //   edgeFields.push(thisFinder.grid[field.row + 1][field.col]); //get field on the bottom value
 
         // if clicked field doesn't touch at least one that is already selected -> show alert and finish function
         if (!edgeFields.includes(true)) {
@@ -160,17 +159,6 @@ class Finder {
       fieldElem.classList.add('active');
     }
   }
-
-  /* selectField() {
-    const thisFinder = this;
-
-    thisFinder.dom.finderContainer.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      const clickedElement = e.target;
-      console.log(clickedElement);
-    });
-  } */
 }
 
 export default Finder;

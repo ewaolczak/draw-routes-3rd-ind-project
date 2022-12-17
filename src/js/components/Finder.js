@@ -24,6 +24,10 @@ class Finder {
       }
     }
     console.log(thisFinder.grid);
+
+    thisFinder.selectedFields = [];
+    thisFinder.startField = [];
+    thisFinder.finishField = [];
   }
 
   render() {
@@ -54,6 +58,12 @@ class Finder {
         html += `<div class="field" data-row="${row}" data-col="${col}"></div>`;
       }
     }
+
+    /* if (!thisFinder.grid == null) {
+      thisFinder.selectedFields (function(field) {
+        return field === true;
+      });
+    } */
 
     thisFinder.element.querySelector(select.finder.grid).innerHTML = html;
 
@@ -130,8 +140,6 @@ class Finder {
         .map((col) => Object.values(col))
         .flat();
 
-      console.log(gridValues);
-
       // if grid isn't empty...
       if (gridValues.includes(true)) {
         // determine edge fields
@@ -152,11 +160,16 @@ class Finder {
           );
           return;
         }
+
+        console.log(gridValues);
       }
 
       // select clicked field
       thisFinder.grid[field.row][field.col] = true;
       fieldElem.classList.add('active');
+      thisFinder.selectedFields.push(field);
+
+      console.log(thisFinder.selectedFields);
     }
   }
 }

@@ -25,6 +25,9 @@ export const classNames = {
   finder: {
     field: '.field',
     active: '.active',
+    extremePoint: '.extreme-point',
+    startPoint: '.start-point',
+    finishPoint: '.finish-point',
   },
 };
 

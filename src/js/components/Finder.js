@@ -25,9 +25,8 @@ class Finder {
     }
     console.log(thisFinder.grid);
 
-    thisFinder.selectedFields = [];
-    thisFinder.startField = [];
-    thisFinder.finishField = [];
+    thisFinder.startPoint = [];
+    thisFinder.finishPoint = [];
   }
 
   render() {
@@ -55,15 +54,16 @@ class Finder {
     let html = '';
     for (let row = 1; row <= 10; row++) {
       for (let col = 1; col <= 10; col++) {
-        html += `<div class="field" data-row="${row}" data-col="${col}"></div>`;
+        let isActive = false;
+        if (thisFinder.grid && thisFinder.grid[row][col] === true) {
+          isActive = true;
+        }
+
+        html += `<div class="field ${
+          isActive ? 'active' : ''
+        }" data-row="${row}" data-col="${col}"></div>`;
       }
     }
-
-    /* if (!thisFinder.grid == null) {
-      thisFinder.selectedFields (function(field) {
-        return field === true;
-      });
-    } */
 
     thisFinder.element.querySelector(select.finder.grid).innerHTML = html;
 
@@ -111,6 +111,16 @@ class Finder {
       thisFinder.dom.button.addEventListener('click', function (e) {
         e.preventDefault();
         thisFinder.changeStep(3);
+      });
+
+      thisFinder.dom.fields.forEach((field) => {
+        field.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          if (e.target.classList.contains('field')) {
+            thisFinder.startFinish(e.target);
+          }
+        });
       });
     } else if (thisFinder.step === 3) {
       // TO DO
@@ -167,10 +177,37 @@ class Finder {
       // select clicked field
       thisFinder.grid[field.row][field.col] = true;
       fieldElem.classList.add('active');
-      thisFinder.selectedFields.push(field);
-
-      console.log(thisFinder.selectedFields);
     }
+  }
+
+  startFinish(extremePoint) {
+    const thisFinder = this;
+
+    // get row and col info from field elem attrs
+    const point = {
+      row: parseInt(extremePoint.getAttribute('data-row')),
+      col: parseInt(extremePoint.getAttribute('data-col')),
+    };
+
+    const gridValues = Object.values(thisFinder.grid)
+      .map((col) => Object.values(col))
+      .flat();
+
+    if (!gridValues.includes('Start')) {
+      thisFinder.grid[point.row][point.col] = 'Start';
+      thisFinder.startPoint.push(point.row, point.col);
+      extremePoint.classList.toggle(classNames.finder.extremePoint),
+      extremePoint.classList.toggle(classNames.finder.startPoint);
+    }
+
+    if (!gridValues.includes('Finish')) {
+      thisFinder.grid[point.row][point.col] = 'Finish';
+      thisFinder.finishPoint.push(point.row, point.col);
+      extremePoint.classList.toggle(classNames.finder.extremePoint),
+      extremePoint.classList.toggle(classNames.finder.finishPoint);
+    }
+
+    console.log(thisFinder.startPoint, thisFinder.finishPoint);
   }
 }
 

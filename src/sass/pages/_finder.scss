@@ -18,16 +18,18 @@
   width: $basic-field-size;
   height: $basic-field-size;
   border: solid 1px $color-light;
+}
 
-  &.active {
-    background-color: $color-main;
+.active {
+  background-color: $color-main;
+
+  &.start-point {
+    background-color: $color-success;
+  }
+
+  &.finish-point {
+    background-color: $color-warning;
   }
 }
 
-.start-point {
-  background-color: $color-success;
-}
 
-.finish-point {
-  background-color: $color-warning;
-}

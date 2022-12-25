@@ -24,9 +24,6 @@ class Finder {
       }
     }
     console.log(thisFinder.grid);
-
-    thisFinder.startPoint = [];
-    thisFinder.finishPoint = [];
   }
 
   render() {
@@ -177,6 +174,7 @@ class Finder {
       // select clicked field
       thisFinder.grid[field.row][field.col] = true;
       fieldElem.classList.add('active');
+      // thisFinder.edgeFields.classList.add('edge-field');
     }
   }
 
@@ -185,8 +183,8 @@ class Finder {
 
     // get row and col info from field elem attrs
     const point = {
-      row: parseInt(extremePoint.getAttribute('data-row')),
-      col: parseInt(extremePoint.getAttribute('data-col')),
+      row: extremePoint.getAttribute('data-row'),
+      col: extremePoint.getAttribute('data-col'),
     };
 
     const gridValues = Object.values(thisFinder.grid)
@@ -195,19 +193,20 @@ class Finder {
 
     if (!gridValues.includes('Start')) {
       thisFinder.grid[point.row][point.col] = 'Start';
-      thisFinder.startPoint.push(point.row, point.col);
-      extremePoint.classList.toggle(classNames.finder.extremePoint),
-      extremePoint.classList.toggle(classNames.finder.startPoint);
+      // thisFinder.startPoint.push(point.row, point.col);
+      extremePoint.classList.add(classNames.finder.extremePoint),
+        extremePoint.classList.add(classNames.finder.startPoint);
     }
 
-    if (!gridValues.includes('Finish')) {
+    if (
+      !gridValues.includes('Finish') &&
+      thisFinder.grid[point.row][point.col] !== 'Start'
+    ) {
       thisFinder.grid[point.row][point.col] = 'Finish';
-      thisFinder.finishPoint.push(point.row, point.col);
-      extremePoint.classList.toggle(classNames.finder.extremePoint),
-      extremePoint.classList.toggle(classNames.finder.finishPoint);
+      // thisFinder.finishPoint.push(point.row, point.col);
+      extremePoint.classList.add(classNames.finder.extremePoint),
+        extremePoint.classList.add(classNames.finder.finishPoint);
     }
-
-    console.log(thisFinder.startPoint, thisFinder.finishPoint);
   }
 }
 

@@ -52,13 +52,25 @@ class Finder {
     for (let row = 1; row <= 10; row++) {
       for (let col = 1; col <= 10; col++) {
         let isActive = false;
-        if (thisFinder.grid && thisFinder.grid[row][col] === true) {
+        let isStart = false;
+        let isFinish = false;
+        if (thisFinder.grid && !!thisFinder.grid[row][col]) {
           isActive = true;
         }
+        if (thisFinder.grid && thisFinder.grid[row][col] === 'Start') {
+          isStart = true;
+        }
+        if (thisFinder.grid && thisFinder.grid[row][col] === 'Stop') {
+          isFinish = true;
+        }
 
-        html += `<div class="field ${
-          isActive ? 'active' : ''
-        }" data-row="${row}" data-col="${col}"></div>`;
+        let className = 'field';
+        if (isActive) className += ' active';
+        if (isStart) className += ' start-point';
+        if (isFinish) className += ' finish-point';
+        if (isStart || isFinish) className += ' extreme-point';
+
+        html += `<div class="field ${className}" data-row="${row}" data-col="${col}"></div>`;
       }
     }
 
@@ -208,6 +220,11 @@ class Finder {
         extremePoint.classList.add(classNames.finder.finishPoint);
     }
   }
+
+  /* findingRoute() {
+    const thisFinder = this;
+
+  } */
 }
 
 export default Finder;

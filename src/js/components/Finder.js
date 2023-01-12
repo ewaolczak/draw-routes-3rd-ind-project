@@ -60,7 +60,7 @@ class Finder {
         if (thisFinder.grid && thisFinder.grid[row][col] === 'Start') {
           isStart = true;
         }
-        if (thisFinder.grid && thisFinder.grid[row][col] === 'Stop') {
+        if (thisFinder.grid && thisFinder.grid[row][col] === 'Finish') {
           isFinish = true;
         }
 
@@ -137,6 +137,8 @@ class Finder {
         e.preventDefault();
         thisFinder.changeStep(1);
       });
+
+      thisFinder.findRoute();
     }
   }
 
@@ -221,10 +223,84 @@ class Finder {
     }
   }
 
-  /* findingRoute() {
+  findRoute() {
     const thisFinder = this;
 
-  } */
+    const startLocation = {
+      row: thisFinder.start.row,
+      col: thisFinder.start.col,
+      //path - tablica z 'trasą' będzie zawierała stringi w stulu 'up, right, left...'
+      path: [],
+      status: 'start-point',
+    };
+
+    const routes = [startLocation];
+
+    while (routes.length) {
+      const currentLocation = routes.shift();
+
+      let nextLocation = thisFinder.checkMove(currentLocation, 'up');
+      if (nextLocation.status === 'finish-point') {
+        return nextLocation.path;
+      } else if (nextLocation.status === 'valid' && nextLocation.status !== 'checked-field') {
+        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      }
+      nextLocation = thisFinder.checkMove(currentLocation, 'right');
+      if (nextLocation.status === 'finish-point') {
+        return nextLocation.path;
+      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
+        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      }
+      nextLocation = thisFinder.checkMove(currentLocation, 'down');
+      if (nextLocation.status === 'finish-point') {
+        return nextLocation.path;
+      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
+        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      }
+      nextLocation = thisFinder.checkMove(currentLocation, 'left');
+      if (nextLocation.status === 'finish-point') {
+        return nextLocation.path;
+      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
+        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      }
+    }
+
+    return false;
+  }
+
+  checkMove(location, direction) {
+    const thisFinder = this;
+
+    const newPath = [...location.path, direction];
+
+    const newLocation = { ...location, path: newPath, status: null };
+
+    if (direction === 'up') {
+      newLocation.row -= 1;
+    } else if (direction === 'right') {
+      newLocation.col += 1;
+    } else if (direction === 'down') {
+      newLocation.row += 1;
+    } else if (direction === 'left') {
+      newLocation.col -= 1;
+    }
+
+    newLocation.status = thisFinder.checkLocationStatus(newLocation);
+
+    return newLocation;
+  }
+
+  checkLocationStatus(location) {
+    if (location !== 'field') {
+      return false;
+    } else if (location === 'finish-point') {
+      return 'finish-point';
+    } else if (location === 'valid') {
+      return 'valid';
+    } else {
+      return 'false';
+    }
+  }
 }
 
 export default Finder;

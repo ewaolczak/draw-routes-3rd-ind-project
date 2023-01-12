@@ -30,4 +30,8 @@
   &.finish-point {
     background-color: $color-warning;
   }
+
+  &.valid {
+    background-color: $color-success;
+  }
 }

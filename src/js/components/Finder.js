@@ -242,26 +242,42 @@ class Finder {
       let nextLocation = thisFinder.checkMove(currentLocation, 'up');
       if (nextLocation.status === 'finish-point') {
         return nextLocation.path;
-      } else if (nextLocation.status === 'valid' && nextLocation.status !== 'checked-field') {
-        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      } else if (
+        nextLocation.status === 'valid' &&
+        nextLocation.status !== 'checked-field'
+      ) {
+        routes.push(nextLocation) &&
+          nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'right');
       if (nextLocation.status === 'finish-point') {
         return nextLocation.path;
-      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
-        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      } else if (
+        nextLocation.status === 'valid' &&
+        nextLocation.status !== 'checked-field'
+      ) {
+        routes.push(nextLocation) &&
+          nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'down');
       if (nextLocation.status === 'finish-point') {
         return nextLocation.path;
-      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
-        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      } else if (
+        nextLocation.status === 'valid' &&
+        nextLocation.status !== 'checked-field'
+      ) {
+        routes.push(nextLocation) &&
+          nextLocation.classList.add(classNames.finder.checkedField);
       }
       nextLocation = thisFinder.checkMove(currentLocation, 'left');
       if (nextLocation.status === 'finish-point') {
         return nextLocation.path;
-      } else if (nextLocation.status === 'valid'  && nextLocation.status !== 'checked-field') {
-        routes.push(nextLocation) && nextLocation.classList.add(classNames.finder.checkedField);
+      } else if (
+        nextLocation.status === 'valid' &&
+        nextLocation.status !== 'checked-field'
+      ) {
+        routes.push(nextLocation) &&
+          nextLocation.classList.add(classNames.finder.checkedField);
       }
     }
 
@@ -291,14 +307,18 @@ class Finder {
   }
 
   checkLocationStatus(location) {
-    if (location !== 'field') {
+    const thisFinder = this;
+    const { row, col } = location;
+    const { grid } = thisFinder;
+
+    if (row < 0 || row > 10 || col < 0 || col > 10) {
       return false;
-    } else if (location === 'finish-point') {
+    } else if (grid[row][col] === 'finish-point') {
       return 'finish-point';
-    } else if (location === 'valid') {
+    } else if (grid[row][col] === 'valid') {
       return 'valid';
     } else {
-      return 'false';
+      return false;
     }
   }
 }
